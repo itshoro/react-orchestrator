@@ -4,6 +4,8 @@
     "module": "CommonJS",
     "declaration": true,
     "outDir": "build",
+    "jsx": "preserve",
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
   },
