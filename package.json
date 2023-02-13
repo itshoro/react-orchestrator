@@ -5,8 +5,13 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "prepublishOnly": "pnpm install && rm -rf build/ && pnpm build"
   },
+  "files": [
+    "package.json",
+    "LICENSE"
+  ],
   "keywords": [],
   "author": "Tim Nelke",
   "license": "ISC",
