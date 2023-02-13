@@ -2,7 +2,8 @@
   "name": "react-orchestrator",
   "version": "0.0.0",
   "description": "Orchestrate React-based workflows in code, with full typescript integration.",
-  "main": "index.js",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
