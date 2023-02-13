@@ -1,12 +1,12 @@
 import { useState } from "react";
 import type {
   OrchestratorController,
-  ValidStates,
+  ValidState,
 } from "../components/Orchestrator/Orchestrator";
 
-const useOrchestrator = <TSteps extends ValidStates>(
-  steps: TSteps,
-  initialState: TSteps[number]
+const useOrchestrator = <TState extends ValidState>(
+  states: readonly TState[],
+  initialState: TState
 ) => {
   const [state, setState] = useState(initialState);
 
@@ -14,8 +14,8 @@ const useOrchestrator = <TSteps extends ValidStates>(
     state,
     setState,
     initialState,
-    availableStates: steps,
-  } as const satisfies OrchestratorController<TSteps>;
+    availableStates: states,
+  } satisfies OrchestratorController<TState>;
 };
 
 export default useOrchestrator;

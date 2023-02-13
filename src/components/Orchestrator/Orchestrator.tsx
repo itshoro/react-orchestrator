@@ -1,26 +1,25 @@
 import type { Dispatch, ReactElement, SetStateAction } from "react";
 
 type ValidState = string | number;
-type ValidStates = readonly ValidState[];
 
-type OrchestratorController<TSteps extends ValidStates> = {
-  state: TSteps[number];
-  setState: Dispatch<SetStateAction<TSteps[number]>>;
-  initialState: TSteps[number];
-  availableStates: TSteps;
+type OrchestratorController<TStep extends ValidState> = {
+  state: TStep;
+  setState: Dispatch<SetStateAction<TStep>>;
+  initialState: TStep;
+  availableStates: readonly TStep[];
 };
 
-interface OrchestratorProps<TSteps extends ValidStates> {
-  controller: Readonly<OrchestratorController<TSteps>>;
-  steps: Record<TSteps[number], ReactElement | null>;
+interface OrchestratorProps<TStep extends ValidState> {
+  controller: Readonly<OrchestratorController<TStep>>;
+  states: Record<TStep, ReactElement | null>;
 }
 
-const Orchestrator = <TSteps extends ValidStates>({
-  steps,
+const Orchestrator = <TStep extends ValidState>({
+  states,
   controller,
-}: OrchestratorProps<TSteps>) => {
-  return steps !== undefined ? steps[controller.state] : null;
+}: OrchestratorProps<TStep>) => {
+  return states !== undefined ? states[controller.state] : null;
 };
 
 export default Orchestrator;
-export type { OrchestratorController, ValidState, ValidStates };
+export type { OrchestratorController, ValidState };

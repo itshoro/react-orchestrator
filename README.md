@@ -4,8 +4,7 @@ React Orchestrator is a lightweight, fully typesafe code-based workflow orchestr
 
 ```tsx
 const Workflow = () => {
-  const controller = useOrchestrator(["start", "stop"] as const, "start"); // `as const` is required to infer  throughout the app.
-
+  const controller = useOrchestrator(["start", "stop"], "start");
   return (
     <Orchestrator
       controller={controller}
