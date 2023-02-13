@@ -1,0 +1,19 @@
+{
+  "name": "react-orchestrator",
+  "version": "0.0.0",
+  "description": "Orchestrate React-based workflows in code, with full typescript integration.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tim Nelke",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
