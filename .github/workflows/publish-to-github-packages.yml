@@ -39,7 +39,8 @@ jobs:
         with:
           node-version: 18
           registry-url: "https://npm.pkg.github.com"
-      - run: npm install
+      - run: npm install pnpm
+      - run: npm run pnpm install
       - run: echo "version=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       - run: npm version ${{ env.version }} --allow-same-version
       - run: npm publish
