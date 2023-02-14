@@ -40,6 +40,8 @@ jobs:
           node-version: 18
           registry-url: "https://npm.pkg.github.com"
       - uses: pnpm/action-setup@v2
+        with:
+          version: latest
       - run: pnpm install
       - run: echo "version=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       - run: pnpm version ${{ env.version }} --allow-same-version
