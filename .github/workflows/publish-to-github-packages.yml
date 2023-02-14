@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci
+      - run: npm install
       - run: npm test
 
   build:
@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci
+      - run: npm install
       - run: npm run build
 
   publish-to-github-packages:
@@ -39,7 +39,7 @@ jobs:
         with:
           node-version: 18
           registry-url: "https://npm.pkg.github.com"
-      - run: npm ci
+      - run: npm install
       - run: echo "version=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       - run: npm version ${{ env.version }} --allow-same-version
       - run: npm publish
