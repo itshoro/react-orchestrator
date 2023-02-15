@@ -37,9 +37,9 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: latest
-      - run: pnpm install
+      - run: npm install
       - run: echo "version=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
-      - run: pnpm version ${{ env.version }} --allow-same-version
-      - run: pnpm publish
+      - run: npm version ${{ env.version }} --allow-same-version
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
