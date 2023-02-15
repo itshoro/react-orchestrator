@@ -1,0 +1,27 @@
+name: publish-to-github-packages
+run-name: Publish to Github Packages
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v0.*
+jobs:
+  publish-to-github-packages:
+    runs-on: ubuntu-latest
+    needs: [test-code.test, test-code.build]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: "https://npm.pkg.github.com"
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - run: pnpm install
+      - run: echo "version=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+      - run: pnpm version ${{ env.version }} --allow-same-version
+      - run: pnpm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
